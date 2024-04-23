@@ -1,7 +1,7 @@
 ---
 author: Karthick
-pubDatetime: 2024-09-23T15:22:00Z
-modDatetime: 2023-12-21T09:12:47.400Z
+pubDatetime: 2024-02-23T15:22:00Z
+modDatetime: 2024-02-21T09:12:47.400Z
 title: My first post on devkarti
 slug: my-first-post-on-devkarti
 featured: true
@@ -13,7 +13,7 @@ description: An quick intro about my new devkarti blog.
 
 An quick intro about my new devkarti blog.
 
-![Image 0: My first post on devkarti.](/src/assets/images/myfirstpost.webp)
+![Image 0: My first post on devkarti.](/posts/myfirstpost.webp)
 
 ## Why did I create a blog named devkarti?
 

@@ -3,7 +3,7 @@ layout: ../layouts/AboutLayout.astro
 title: "About"
 ---
 
-<img src="/pic-karti.jpg" alt="Karthick K profile picture" style="height: 200px;border-radius: .375rem">
+<img src="/pic-karti.jpg" alt="Karthick K profile picture" style="height: 200px;width:200px;border-radius: .375rem">
 
 With 6+ years of comprehensive experience in web application development, I have polished my skills in both frontend and backend development.
 One among top 27 developers in Chennai in multiple category by Upwork with 100% Job Success Score.

@@ -31,7 +31,7 @@ A few years back, I had a blog where I used to post technology content alone. Bu
 
 ## More about devkarti.
 
-There is no intention to add any advertisements to any part of the website. This blog was completely created with Laravel and FilamentPHP in just 1 day. How? I will have detailed content on this in a separate blog. I might also open-source the code later if I feel comfortable, so others can also use this. Other than that,  
+There is no intention to add any advertisements to any part of the website. This blog is created with Astro, Thanks to [Sat Naing](https://github.com/satnaing) for his Astro Paper theme. This theme is available in [Github](https://github.com/satnaing/astro-paper), You can check it out and create your own version too. Other than that,  
 Welcome to devkarti.
 
 Happy reading.

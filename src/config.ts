@@ -5,7 +5,6 @@ export const SITE: Site = {
   author: "Karthick",
   desc: "Developer, Speaker and Founder of Gigcodes. I write about coding, startups, and my journey as a full-stack developer.",
   title: "devkarti",
-  ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
   postPerPage: 3,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes

@@ -3,34 +3,19 @@ layout: ../layouts/AboutLayout.astro
 title: "About"
 ---
 
-AstroPaper is a minimal, responsive and SEO-friendly Astro blog theme. I designed and crafted this based on [my personal blog](https://satnaing.dev/blog).
+<img src="/src/assets/images/pic-karti.jpg" alt="Karthick K profile picture" style="height: 200px;border-radius: .375rem">
 
-This theme is aimed to be accessible out of the box. Light and dark mode are supported by
-default and additional color schemes can also be configured.
+With 6+ years of comprehensive experience in web application development, I have polished my skills in both frontend and backend development.
+One among top 27 developers in Chennai in multiple category by Upwork with 100% Job Success Score.
 
-This theme is self-documented \_ which means articles/posts in this theme can also be considered as documentations. So, see the documentation for more info.
+### Educational Background
 
-<div>
-  <img src="/assets/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
-</div>
+#### B.Tech in Information Technology
 
-## Tech Stack
+- **Institution:** Anna University | 2014 ~ 2018
+- **Details:** Part of RD dept. developing devices using Arduino microcontroller and of course an Engineering degree.
 
-This theme is written in vanilla JavaScript (+ TypeScript for type checking) and a little bit of ReactJS for some interactions. TailwindCSS is used for styling; and Markdown is used for blog contents.
+#### Job Profile
 
-## Features
-
-Here are certain features of this site.
-
-- fully responsive and accessible
-- SEO-friendly
-- light & dark mode
-- fuzzy search
-- super fast performance
-- draft posts
-- pagination
-- sitemap & rss feed
-- highly customizable
-
-If you like this theme, you can star/contribute to the [repo](https://github.com/satnaing/astro-paper).  
-Or you can even give any feedback via my [email](mailto:contact@satnaing.dev).
+- **Company:** Indigital Pvt Ltd | 2020 - present
+- **Details:** Got overall band score 6.5.

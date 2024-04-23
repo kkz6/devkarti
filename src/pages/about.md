@@ -13,9 +13,9 @@ One among top 27 developers in Chennai in multiple category by Upwork with 100% 
 #### B.Tech in Information Technology
 
 - **Institution:** Anna University | 2014 ~ 2018
-- **Details:** Part of RD dept. developing devices using Arduino microcontroller and of course an Engineering degree.
+- **Details:** Part of RD dept. Creating and Programming devices using Arduino microcontroller and of course an Engineering degree.
 
 #### Job Profile
 
 - **Company:** Indigital Pvt Ltd | 2020 - present
-- **Details:** Got overall band score 6.5.
+- **Designation:** Senior Software Developer.

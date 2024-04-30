@@ -4,7 +4,7 @@ pubDatetime: 2024-02-23T15:22:00Z
 modDatetime: 2024-02-21T09:12:47.400Z
 title: My first post on devkarti
 slug: my-first-post-on-devkarti
-featured: true
+featured: false
 draft: false
 tags:
   - myself

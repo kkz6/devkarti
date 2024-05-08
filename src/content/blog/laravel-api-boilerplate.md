@@ -76,7 +76,7 @@ Changes to be committed:
 
 ```
 
-You can add any kind of modifications to this to add the modified change whenever you run an _artisan make_ command.
+You can customize this to automatically apply your modifications each time you run an _artisan make_ command.
 
 Our goal here is not to modify the entire stubs. But start with some basic changes which can speed up the entire process.
 

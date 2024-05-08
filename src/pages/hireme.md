@@ -19,31 +19,31 @@ title: "Hire Me"
 
 ### <span role="img">👇</span> Here's some of the stuff I can help you with
 
-#### -> Build your dream project
+#### <span role="img">👉</span> Build your dream project
 
 _I can help you out to build your dream project from scratch to production or can join team if your teams needs more
 people to work._
 
-#### -> Audit project
+#### <span role="img">👉</span> Audit project
 
-I can audit your project and prepare a list of things that could be improved
+_I can audit your project and prepare a list of things that could be improved_
 
-#### -> Optimize performance
+#### <span role="img">👉</span> Optimize performance
 
-I have extensive knowledge in optimizing applications, both on PHP and SQL level
+_I have extensive knowledge in optimizing applications, both on PHP and SQL level_
 
-#### -> Fix legacy code
+#### <span role="img">👉</span> Fix legacy code
 
-I can help you in migrating your old code to modern standards by creating a test suite and rewriting the code
+_I can help you in migrating your old code to modern standards by creating a test suite and rewriting the code_
 
-#### -> Introduce patterns
+#### <span role="img">👉</span> Introduce patterns
 
-If your project doesn't utilize any patterns, or uses them inconsistently, I can help you in unifying them
+_If your project doesn't utilize any patterns, or uses them inconsistently, I can help you in unifying them_
 
-#### -> Enforce processes
+#### <span role="img">👉</span> Enforce processes
 
-If you feel that there is no solid processes in the development cycle, I can help by introducing SOPs
+_If you feel that there is no solid processes in the development cycle, I can help by introducing SOPs_
 
-#### -> Help in hiring
+#### <span role="img">👉</span> Help in hiring
 
-It's hard to hire good people. I've interviewed 100s of developers and can help to find the best people for your team
+_It's hard to hire good people. I've interviewed 100s of developers and can help to find the best people for your team_

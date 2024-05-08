@@ -15,7 +15,7 @@ title: "Hire Me"
 </path>
 </svg>
 </div>
-<div class="mt-8 mb-8"><h3 class="font-medium text-lg mb-2 md:text-3xl">Let's be awesome together!</h3><p class="mb-6 mx-auto max-w-lg md:mb-10 lg:leading-loose">If you are interested in hiring me as a part-time consultant or If you have opportunities for collaboration or want to build something amazing, don't hesitate to contact me!</p><a role="button" class="bg-marrsgreen hover:bg-marrslight active:bg-marrsdark dark:hover:bg-carrilight dark:active:bg-carridark dark:bg-carrigreen text-bglight dark:text-bgdark py-2 px-3 rounded lg:text-xl  outline-marrsgreen dark:outline-carrigreen focus-visible:outline-double outline-offset-2" href="mailto:karthick@gigcodes.coms" target="_self">Get in touch!</a></div></section>
+<div class="mt-8 mb-8"><h3 class="font-medium text-lg mb-2 md:text-3xl">Let's be awesome together!</h3><p class="mb-6 mx-auto max-w-lg md:mb-10 lg:leading-loose">If you are interested in hiring me as a part-time consultant or If you have opportunities for collaboration or want to build something amazing, don't hesitate to contact me!</p><a role="button" class="bg-marrsgreen hover:bg-marrslight active:bg-marrsdark dark:hover:bg-carrilight dark:active:bg-carridark dark:bg-carrigreen text-bglight dark:text-bgdark py-2 px-3 rounded lg:text-xl  outline-marrsgreen dark:outline-carrigreen focus-visible:outline-double outline-offset-2" href="mailto:karthick@gigcodes.com" target="_self">Get in touch!</a></div></section>
 
 ### <span role="img">👇</span> Here's some of the stuff I can help you with
 

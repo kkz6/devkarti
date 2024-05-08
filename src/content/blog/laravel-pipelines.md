@@ -17,13 +17,13 @@ description: Some simple steps to implement laravel pipelines in your code.
 
 # Laravel Pipelines in Actions
 
-Laravel Pipelines have improved a lot recently. Pipeline class is implemented based on the Chain of Responsibility (aka CoR) design pattern and …. Just kidding this is not a blog post to explain what is pipeline. You can google it and understand it more. This is Laravel Pipelines in actions.
+Laravel Pipelines have improved a lot recently. Pipeline class is implemented based on the Chain of Responsibility (aka CoR) design pattern and …. Just kidding this is not a blog post to explain what is pipeline. You can google it and understand it more. This is Laravel Pipelines in action.
 
 ## Project goal.
 
-To make the pipelines understand easier we are going to create a simple but yet it can become complex example based on how you take it further.
+To understand pipelines easier we are going to create a simple yet it can become a complex example based on how you take it further.
 
-If you have seen in my [previous post](https://www.devkarti.com/posts/building-apis-with-laravel-even-faster/) where I have used [query builder from Spatie](https://spatie.be/docs/laravel-query-builder/v5/introduction) to adding sorting and filtering to the response. Now in this project we are going to do it manually. This is just an example. You can understand the concept and make modifications as much as you want.
+If you have seen in my [previous post](https://www.devkarti.com/posts/building-apis-with-laravel-even-faster/) where I have used [query builder from Spatie](https://spatie.be/docs/laravel-query-builder/v5/introduction) to adding sorting and filtering to the response. Now in this project, we are going to do it manually. This is just an example. You can understand the concept and make modifications as much as you want.
 
 This is how my previous code looks like when we are using Query Builder.
 
@@ -68,11 +68,11 @@ public function index(Request $request)
 
 In this code kindly note that we are also using macros for Request class. The details are available in my [previous post](https://www.devkarti.com/posts/building-apis-with-laravel-even-faster/#bonus-tips). Also, The pagination part for the code here is already implemented.
 
-Laravel or any framework can be modified in any formats you want. But here to make the code even more readable and understand I am following a way which is good for me. Feel free to modify it any others ways you want.
+Laravel or any framework can be modified in any format you want. But here to make the code even more readable and understand I am following a way which is good for me. Feel free to modify it any other way you want.
 
 ### Let’s start with Sorting.
 
-Lets Create a folder inside the **app** directory and name it as **QueryFilters**
+Let's Create a folder inside the **app** directory and name it as **QueryFilters**
 
 Create a class named **Sort** . The final code would look something like this.
 
@@ -95,7 +95,7 @@ class Sort
 }
 
 /// Active Filter
-// Considering you already have an column active in users table with a boolean value.
+// Considering you already have a column active in users table with a boolean value.
 <?php
 
 namespace App\QueryFilters;
@@ -114,7 +114,7 @@ class Active
 
 ```
 
-Finally you update your index method to add the query filters to the pipelines.
+Finally, you update your index method to add the query filters to the pipelines.
 
 ```php
 
@@ -148,7 +148,7 @@ class UsersController extends Controller
 }
 ```
 
-That’s all. This is pipelines. We have added sorting and active columns based filtering to the code. In the Query Filters it is necessary you need to add the code in the handle method. Coz Laravel is designed in that way. Based on the this code you might have seen a class with handle method already somewhere else right ?. Try to remember it.
+That’s all. This is pipelines. We have added sorting and active columns based filtering to the code. In the Query Filters it is necessary you need to add the code in the handle method. Coz Laravel is designed in that way. Based on this code you might have seen a class with handle method already somewhere else right ?. Try to remember it.
 
 Yes, Exactly, the Laravel Middleware. The entire Laravel middleware works with the strategy. You can dig around the code to understand more about them.
 

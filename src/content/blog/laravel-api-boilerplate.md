@@ -3,7 +3,7 @@ pubDatetime: 2024-04-30T00:00:00Z
 modDatetime: 2024-04-30T00:00:00Z
 title: Building APIs with Laravel even faster.
 slug: building-apis-with-laravel-even-faster
-featured: true
+featured: false
 draft: false
 tags:
   - laravel

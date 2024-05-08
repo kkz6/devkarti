@@ -13,7 +13,7 @@ tags:
 description: Some simple steps to implement laravel pipelines in your code.
 ---
 
-![Image 0: Laravel Pipelines in Actions.](/posts/laravel-pipelines.webp)
+![Image 0: Laravel Pipelines in Actions.](/posts/laravel-pipes.webp)
 
 # Laravel Pipelines in Actions
 

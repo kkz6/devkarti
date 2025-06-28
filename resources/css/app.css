@@ -1,0 +1,52 @@
+@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+@layer base {
+    :root {
+        --color-fill: 251, 254, 251;
+        --color-text-base: 40, 39, 40;
+        --color-accent: 0, 108, 172;
+        --color-card: 230, 230, 230;
+        --color-card-muted: 205, 205, 205;
+        --color-border: 236, 233, 233;
+    }
+
+    .dark {
+        --color-fill: 33, 39, 55;
+        --color-text-base: 234, 237, 243;
+        --color-accent: 255, 107, 1;
+        --color-card: 52, 63, 96;
+        --color-card-muted: 138, 51, 2;
+        --color-border: 171, 75, 8;
+    }
+}
+
+@layer components {
+    .text-skin-base {
+        @apply text-gray-900 dark:text-gray-100;
+    }
+
+    .text-skin-accent {
+        color: rgb(var(--color-accent));
+    }
+
+    .border-skin-line {
+        border-color: rgb(var(--color-border));
+    }
+
+    .fill-skin-base {
+        fill: rgb(var(--color-text-base));
+    }
+}

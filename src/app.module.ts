@@ -5,7 +5,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { BlogModule } from './blog/blog.module';
 import { DatabaseModule } from './database/database.module';
-import { InertiaModule, InertiaMiddleware } from './inertia';
+import { InertiaModule } from './inertia';
 
 @Module({
   imports: [
@@ -21,10 +21,4 @@ import { InertiaModule, InertiaMiddleware } from './inertia';
     BlogModule,
   ],
 })
-export class AppModule implements NestModule {
-  configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(InertiaMiddleware)
-      .forRoutes('*');
-  }
-} 
+export class AppModule {} 

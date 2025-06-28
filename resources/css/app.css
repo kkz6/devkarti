@@ -4,13 +4,18 @@
 
 /* Custom styles */
 .prose pre {
-  @apply !bg-gray-800;
+  background-color: rgb(31 41 55) !important; /* bg-gray-800 */
 }
 
 .prose code {
-  @apply !text-pink-500 !bg-gray-100 px-1 py-0.5 rounded;
+  color: rgb(236 72 153) !important; /* text-pink-500 */
+  background-color: rgb(243 244 246) !important; /* bg-gray-100 */
+  padding: 0.125rem 0.25rem !important; /* px-1 py-0.5 */
+  border-radius: 0.25rem !important; /* rounded */
 }
 
 .prose pre code {
-  @apply !text-gray-100 !bg-transparent !p-0;
+  color: rgb(243 244 246) !important; /* text-gray-100 */
+  background-color: transparent !important;
+  padding: 0 !important;
 } 

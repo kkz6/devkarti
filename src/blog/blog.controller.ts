@@ -7,78 +7,79 @@ import {
   Delete,
   Put,
   Query,
-  UseInterceptors,
+  Res,
+  Req,
 } from '@nestjs/common';
+import { Response, Request } from 'express';
 import { BlogService } from './blog.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
-import { InertiaInterceptor } from '../inertia/inertia.interceptor';
+import { InertiaService, InertiaHelper } from '../inertia';
 
 @Controller()
-@UseInterceptors(InertiaInterceptor)
 export class BlogController {
-  constructor(private readonly blogService: BlogService) {}
+  constructor(
+    private readonly blogService: BlogService,
+    private readonly inertiaService: InertiaService,
+  ) {}
+
+  private getInertia(req: Request, res: Response): InertiaHelper {
+    return new InertiaHelper(this.inertiaService, req, res);
+  }
 
   @Get()
-  async home() {
-    const { posts } = await this.blogService.findAll(1, 4);
-    return {
-      component: 'Home',
-      props: { posts }
-    };
+  async home(@Req() req: Request, @Res() res: Response) {
+    const posts = await this.blogService.findFeatured();
+    const inertia = this.getInertia(req, res);
+    inertia.render('Home', { posts });
   }
 
   @Get('posts')
-  async index(
-    @Query('page') page: string = '1',
-    @Query('tag') tag?: string,
-  ) {
-    const pageNumber = parseInt(page, 10) || 1;
-    const data = await this.blogService.findAll(pageNumber, 10, tag);
-    return {
-      component: 'Posts',
-      props: data
-    };
+  async posts(@Req() req: Request, @Res() res: Response) {
+    const posts = await this.blogService.findAll();
+    const inertia = this.getInertia(req, res);
+    inertia.render('Posts', { posts });
   }
 
   @Get('posts/:slug')
-  async show(@Param('slug') slug: string) {
-    const post = await this.blogService.findOne(slug);
-    return {
-      component: 'PostDetail',
-      props: { post }
-    };
+  async postDetail(@Param('slug') slug: string, @Req() req: Request, @Res() res: Response) {
+    const post = await this.blogService.findBySlug(slug);
+    const inertia = this.getInertia(req, res);
+    inertia.render('PostDetail', { post });
   }
 
   @Get('tags')
-  async tags() {
-    const tags = await this.blogService.getAllTags();
-    return {
-      component: 'Tags',
-      props: { tags }
-    };
+  async tags(@Req() req: Request, @Res() res: Response) {
+    const tags = await this.blogService.findAllTags();
+    const inertia = this.getInertia(req, res);
+    inertia.render('Tags', { tags });
+  }
+
+  @Get('tags/:slug')
+  async tagPosts(@Param('slug') slug: string, @Req() req: Request, @Res() res: Response) {
+    const tag = await this.blogService.findTagBySlug(slug);
+    const posts = await this.blogService.findByTag(slug);
+    const inertia = this.getInertia(req, res);
+    inertia.render('Tags', { tag, posts });
   }
 
   @Get('search')
-  async search() {
-    const { posts } = await this.blogService.findAll(1, 100);
-    return {
-      component: 'Search',
-      props: { posts }
-    };
+  async search(@Req() req: Request, @Res() res: Response) {
+    const query = req.query.q as string;
+    const posts = query ? await this.blogService.search(query) : [];
+    const inertia = this.getInertia(req, res);
+    inertia.render('Search', { posts, query: query || '' });
   }
 
   @Get('about')
-  async about() {
-    return {
-      component: 'About',
-      props: {}
-    };
+  about(@Req() req: Request, @Res() res: Response) {
+    const inertia = this.getInertia(req, res);
+    inertia.render('About', {});
   }
 
-  // API endpoints for admin panel (future implementation)
+  // API endpoints for admin
   @Post('api/posts')
-  create(@Body() createPostDto: CreatePostDto) {
+  async create(@Body() createPostDto: CreatePostDto) {
     return this.blogService.create(createPostDto);
   }
 

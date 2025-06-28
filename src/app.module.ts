@@ -1,11 +1,11 @@
-import { Module } from '@nestjs/common';
+import { Module, MiddlewareConsumer, NestModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { BlogModule } from './blog/blog.module';
-import { InertiaModule } from './inertia/inertia.module';
 import { DatabaseModule } from './database/database.module';
+import { InertiaModule, InertiaMiddleware } from './inertia';
 
 @Module({
   imports: [
@@ -17,8 +17,14 @@ import { DatabaseModule } from './database/database.module';
       serveRoot: '/public',
     }),
     DatabaseModule,
-    BlogModule,
     InertiaModule,
+    BlogModule,
   ],
 })
-export class AppModule {} 
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(InertiaMiddleware)
+      .forRoutes('*');
+  }
+} 

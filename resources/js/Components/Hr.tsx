@@ -1,14 +1,20 @@
-import React from 'react';
+import React from "react";
 
 interface HrProps {
     noPadding?: boolean;
     ariaHidden?: boolean;
+    className?: string;
 }
 
-export default function Hr({ noPadding = false, ariaHidden = true }: HrProps) {
+export default function Hr({
+    noPadding = false,
+    ariaHidden = true,
+    className = "",
+}: HrProps) {
     return (
-        <div className={noPadding ? '' : 'my-8'} aria-hidden={ariaHidden}>
-            <hr className="border-skin-line" />
-        </div>
+        <hr
+            className={`border-border w-full my-0 ${className}`}
+            aria-hidden={ariaHidden}
+        />
     );
 }

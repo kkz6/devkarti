@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from '@inertiajs/react';
-import Datetime from './Datetime';
-import Tag from './Tag';
+import React from "react";
+import { Link } from "@inertiajs/react";
+import Datetime from "./Datetime";
+import Tag from "./Tag";
 
 interface CardProps {
     href: string;
@@ -14,30 +14,24 @@ interface CardProps {
     secHeading?: boolean;
 }
 
-export default function Card({ href, frontmatter, secHeading = true }: CardProps) {
-    const { title, published_at, description, tags } = frontmatter;
+export default function Card({
+    href,
+    frontmatter,
+    secHeading = true,
+}: CardProps) {
+    const { title, published_at, description } = frontmatter;
 
-    const HeadingTag = secHeading ? 'h2' : 'h3';
+    const HeadingTag = secHeading ? "h2" : "h3";
 
     return (
         <li className="my-6">
-            <Link
-                href={href}
-                className="inline-block text-lg font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
-            >
-                <HeadingTag className="text-lg font-medium decoration-dashed hover:underline">
+            <Link href={href} className="post-link">
+                <HeadingTag className="post-title text-lg font-medium text-accent decoration-dashed hover:underline">
                     {title}
                 </HeadingTag>
             </Link>
             <Datetime datetime={published_at} />
-            <p className="mt-2">{description}</p>
-            {tags && tags.length > 0 && (
-                <div className="mt-2 flex flex-wrap gap-2">
-                    {tags.map((tag) => (
-                        <Tag key={tag.id} tag={tag} />
-                    ))}
-                </div>
-            )}
+            <p>{description}</p>
         </li>
     );
 }

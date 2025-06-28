@@ -1,8 +1,8 @@
-import React from 'react';
-import Layout from '@/Layouts/Layout';
-import Card from '@/Components/Card';
-import Pagination from '@/Components/Pagination';
-import { Link } from '@inertiajs/react';
+import React from "react";
+import Layout from "@/Layouts/Layout";
+import Card from "@/Components/Card";
+import Pagination from "@/Components/Pagination";
+import { Link } from "@inertiajs/react";
 
 interface Post {
     id: number;
@@ -39,15 +39,25 @@ interface TagPostsProps {
 
 export default function TagPosts({ tag, posts }: TagPostsProps) {
     return (
-        <Layout title={`Tag: ${tag.name}`}>
+        <Layout title={`Tag: ${tag.name}`} showBreadcrumb={true}>
             <div className="mx-auto max-w-3xl px-4">
                 <div className="mb-8">
                     <Link
                         href="/tags"
                         className="inline-flex items-center text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200"
                     >
-                        <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                        <svg
+                            className="w-4 h-4 mr-1"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                            />
                         </svg>
                         Back to tags
                     </Link>
@@ -75,7 +85,12 @@ export default function TagPosts({ tag, posts }: TagPostsProps) {
                 )}
 
                 {posts.last_page > 1 && (
-                    <Pagination links={posts.links} />
+                    <Pagination
+                        currentPage={posts.current_page}
+                        lastPage={posts.last_page}
+                        prevUrl={posts.links[0].url}
+                        nextUrl={posts.links[posts.links.length - 1].url}
+                    />
                 )}
             </div>
         </Layout>

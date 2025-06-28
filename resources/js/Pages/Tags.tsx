@@ -1,6 +1,6 @@
-import React from 'react';
-import Layout from '@/Layouts/Layout';
-import { Link } from '@inertiajs/react';
+import React from "react";
+import Layout from "@/Layouts/Layout";
+import { Link } from "@inertiajs/react";
 
 interface Tag {
     id: number;
@@ -15,7 +15,7 @@ interface TagsProps {
 
 export default function Tags({ tags }: TagsProps) {
     return (
-        <Layout title="Tags">
+        <Layout title="Tags" showBreadcrumb={true}>
             <div className="mx-auto max-w-3xl px-4">
                 <h1 className="text-2xl font-bold sm:text-3xl">Tags</h1>
 

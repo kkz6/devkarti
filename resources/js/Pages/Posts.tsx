@@ -1,7 +1,7 @@
-import React from 'react';
-import Layout from '@/Layouts/Layout';
-import Card from '@/Components/Card';
-import Pagination from '@/Components/Pagination';
+import React from "react";
+import Layout from "@/Layouts/Layout";
+import Card from "@/Components/Card";
+import Pagination from "@/Components/Pagination";
 
 interface Post {
     id: number;
@@ -31,25 +31,32 @@ interface PostsProps {
 
 export default function Posts({ posts }: PostsProps) {
     return (
-        <Layout title="Posts">
-            <div className="mx-auto max-w-3xl px-4">
-                <h1 className="text-2xl font-bold sm:text-3xl">All Posts</h1>
-
-                <ul className="mt-8">
-                    {posts.data.map((post) => (
-                        <Card
-                            key={post.id}
-                            href={`/posts/${post.slug}`}
-                            frontmatter={post}
-                            secHeading={false}
-                        />
-                    ))}
-                </ul>
-
-                {posts.last_page > 1 && (
-                    <Pagination links={posts.links} />
-                )}
-            </div>
+        <Layout
+            title="Posts"
+            pageTitle="Posts"
+            pageDesc="All the articles I've posted."
+            showBreadcrumb={true}
+            bottomContent={
+                posts.last_page > 1 ? (
+                    <Pagination
+                        currentPage={posts.current_page}
+                        lastPage={posts.last_page}
+                        prevUrl={posts.links[0].url}
+                        nextUrl={posts.links[posts.links.length - 1].url}
+                    />
+                ) : null
+            }
+        >
+            <ul className="mt-8">
+                {posts.data.map((post) => (
+                    <Card
+                        key={post.id}
+                        href={`/posts/${post.slug}`}
+                        frontmatter={post}
+                        secHeading={false}
+                    />
+                ))}
+            </ul>
         </Layout>
     );
 }

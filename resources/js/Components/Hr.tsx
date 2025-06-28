@@ -12,9 +12,8 @@ export default function Hr({
     className = "",
 }: HrProps) {
     return (
-        <hr
-            className={`border-border w-full my-0 ${className}`}
-            aria-hidden={ariaHidden}
-        />
+        <div className={`max-w-3xl mx-auto ${noPadding ? "px-0" : "px-4"}`}>
+            <hr className="border-skin-line" aria-hidden={ariaHidden} />
+        </div>
     );
 }

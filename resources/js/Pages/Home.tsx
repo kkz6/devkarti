@@ -25,21 +25,19 @@ export default function Home({ featuredPosts, recentPosts }: HomeProps) {
     return (
         <Layout title="Home">
             <div>
-                <section id="hero" className="pb-6 pt-8">
-                    <p className="my-2">
+                <section id="hero">
+                    <p>
                         Developer, Speaker and Founder of Gigcodes. I write
                         about coding, startups, and my journey as a full-stack
                         developer.
                     </p>
-                    <div className="mt-4 flex flex-col sm:flex-row sm:items-center">
-                        <div className="mb-1 mr-2 whitespace-nowrap sm:mb-0">
-                            Social Links:
-                        </div>
+                    <div className="social-wrapper">
+                        <div className="social-links">Social Links:</div>
                         <Socials />
                     </div>
                 </section>
 
-                <Hr />
+                <Hr noPadding />
 
                 {featuredPosts.length > 0 && (
                     <>
@@ -58,7 +56,7 @@ export default function Home({ featuredPosts, recentPosts }: HomeProps) {
                                 ))}
                             </ul>
                         </section>
-                        {recentPosts.length > 0 && <Hr />}
+                        {recentPosts.length > 0 && <Hr noPadding />}
                     </>
                 )}
 

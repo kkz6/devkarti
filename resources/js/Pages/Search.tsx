@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import Layout from '@/Layouts/Layout';
-import Card from '@/Components/Card';
-import Pagination from '@/Components/Pagination';
-import { router } from '@inertiajs/react';
+import React, { useState, useEffect } from "react";
+import Layout from "@/Layouts/Layout";
+import Card from "@/Components/Card";
+import Pagination from "@/Components/Pagination";
+import { router } from "@inertiajs/react";
 
 interface Post {
     id: number;
@@ -32,15 +32,15 @@ interface SearchProps {
 }
 
 export default function Search({ posts, query: initialQuery }: SearchProps) {
-    const [query, setQuery] = useState(initialQuery || '');
+    const [query, setQuery] = useState(initialQuery || "");
 
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault();
-        router.get('/search', { q: query }, { preserveState: true });
+        router.get("/search", { q: query }, { preserveState: true });
     };
 
     return (
-        <Layout title="Search">
+        <Layout title="Search" activeNav="search">
             <div className="mx-auto max-w-3xl px-4">
                 <h1 className="text-2xl font-bold sm:text-3xl">Search</h1>
 
@@ -54,8 +54,18 @@ export default function Search({ posts, query: initialQuery }: SearchProps) {
                             className="w-full px-4 py-2 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
                         />
                         <div className="absolute inset-y-0 left-0 flex items-center pl-3">
-                            <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            <svg
+                                className="w-5 h-5 text-gray-400"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                                />
                             </svg>
                         </div>
                     </div>
@@ -64,7 +74,8 @@ export default function Search({ posts, query: initialQuery }: SearchProps) {
                 {initialQuery && (
                     <div className="mt-8">
                         <p className="text-gray-600 dark:text-gray-400">
-                            Found {posts.total} result{posts.total !== 1 ? 's' : ''} for "{initialQuery}"
+                            Found {posts.total} result
+                            {posts.total !== 1 ? "s" : ""} for "{initialQuery}"
                         </p>
                     </div>
                 )}
@@ -86,9 +97,7 @@ export default function Search({ posts, query: initialQuery }: SearchProps) {
                     </p>
                 )}
 
-                {posts.last_page > 1 && (
-                    <Pagination links={posts.links} />
-                )}
+                {posts.last_page > 1 && <Pagination links={posts.links} />}
             </div>
         </Layout>
     );

@@ -1,113 +1,207 @@
 @import "./fonts.css";
 @import "tailwindcss";
-@import "./typography.css";
+@plugin "@tailwindcss/typography";
 
 @theme {
   /* Font families */
-  --font-sans: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  --font-mono: 'IBM Plex Mono', monospace;
 
   /* Breakpoints */
   --breakpoint-sm: 640px;
 
-  /* Custom colors */
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-accent: var(--accent);
-  --color-muted: var(--muted);
-  --color-border: var(--border);
+  /* Custom color utilities */
+  --color-skin-fill: var(--color-fill);
+  --color-skin-base: var(--color-text-base);
+  --color-skin-accent: var(--color-accent);
+  --color-skin-inverted: var(--color-fill);
+  --color-skin-card: var(--color-card);
+  --color-skin-card-muted: var(--color-card-muted);
+  --color-skin-line: var(--color-border);
 }
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
-:root,
-html[data-theme="light"] {
-  --background: #fdfdfd;
-  --foreground: #282728;
-  --accent: #006cac;
-  --muted: #e6e6e6;
-  --border: #ece9e9;
-}
-
-html[data-theme="dark"] {
-  --background: #212737;
-  --foreground: #eaedf3;
-  --accent: #ff6b01;
-  --muted: #343f60bf;
-  --border: #ab4b08;
-}
+@layer components {
+    .display-none {
+      @apply hidden;
+    }
+    .focus-outline {
+      @apply outline-2 outline-offset-1 outline-skin-fill focus-visible:no-underline focus-visible:outline-dashed;
+    }
+  }
 
 @layer base {
-  *, *::before, *::after {
-    box-sizing: border-box;
+  :root,
+  html[data-theme="light"] {
+    --color-fill: rgb(251, 254, 251);
+    --color-text-base: rgb(40, 39, 40);
+    --color-accent: rgb(0, 108, 172);
+    --color-card: rgb(230, 230, 230);
+    --color-card-muted: rgb(205, 205, 205);
+    --color-border: rgb(236, 233, 233);
   }
-
-  * {
-    @apply border-border outline-accent/75;
-    scrollbar-width: auto;
-    scrollbar-color: var(--color-muted) transparent;
+  html[data-theme="dark"] {
+    --color-fill: rgb(33, 39, 55);
+    --color-text-base: rgb(234, 237, 243);
+    --color-accent: rgb(255, 107, 1);
+    --color-card: rgb(52, 63, 96);
+    --color-card-muted: rgb(138, 51, 2);
+    --color-border: rgb(171, 75, 8);
   }
-
-  html {
-    @apply scroll-smooth;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  #sun-svg,
+  html[data-theme="dark"] #moon-svg {
+    display: none;
   }
-
+  #moon-svg,
+  html[data-theme="dark"] #sun-svg {
+    display: block;
+  }
   body {
-    @apply bg-background font-mono text-foreground selection:bg-accent/75 selection:text-background;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    /* font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important; */
+    @apply flex min-h-[100svh] flex-col bg-skin-fill font-mono text-skin-base
+    selection:bg-skin-accent/70 selection:text-skin-inverted;
   }
-
-  #app {
-    display: contents; /* This makes #app transparent to layout */
-  }
-
-  /* Remove default margins */
+  section,
   footer {
-    margin: 0;
+    @apply mx-auto max-w-3xl;
+  }
+  a {
+    @apply outline-2 outline-offset-1 outline-skin-fill
+    focus-visible:no-underline focus-visible:outline-dashed;
+  }
+  svg {
+    @apply inline-block h-6 w-6 fill-skin-base group-hover:fill-skin-accent;
+  }
+  svg.icon-tabler {
+    @apply inline-block h-6 w-6 scale-125 fill-transparent
+    stroke-current stroke-2 opacity-90 group-hover:fill-transparent
+    sm:scale-110;
+  }
+  .prose {
+    @apply prose-headings:!mb-3 prose-headings:!text-skin-base
+    prose-h3:italic prose-p:!text-skin-base
+    prose-a:!text-skin-base prose-a:!decoration-dashed prose-a:underline-offset-8
+    hover:prose-a:text-skin-accent prose-blockquote:!border-l-skin-accent/50
+    prose-blockquote:opacity-80
+    prose-figcaption:!text-skin-base prose-figcaption:opacity-70
+    prose-strong:!text-skin-base
+
+
+    prose-code:rounded prose-code:bg-skin-card/75
+    prose-code:p-1
+    prose-code:before:!content-none prose-code:after:!content-none
+    prose-ol:!text-skin-base
+    prose-ul:overflow-x-clip prose-ul:!text-skin-base prose-li:marker:!text-skin-accent
+    prose-table:text-skin-base prose-th:border
+    prose-th:border-skin-line prose-td:border
+    prose-td:border-skin-line prose-img:!my-2
+    prose-img:mx-auto prose-img:border-2
+    prose-img:border-skin-line prose-hr:!border-skin-line;
   }
 
-  hr {
-    margin: 0;
-    border: 0;
-    border-top: 1px solid var(--border);
+  .prose a {
+    @apply break-words hover:!text-skin-accent;
   }
 
-  /* Prevent overflow */
-  * {
-    max-width: 100%;
+  .prose thead th:first-child,
+  tbody td:first-child,
+  tfoot td:first-child {
+    padding-left: 0.5714286em;
+  }
+  .prose h2#table-of-contents {
+    @apply mb-2;
+  }
+  .prose details {
+    @apply inline-block cursor-pointer select-none text-skin-base;
+  }
+  /* .prose summary {
+    @apply focus-outline;
+  } */
+  .prose h2#table-of-contents + p {
+    @apply hidden;
   }
 
-  a,
-  button {
-    @apply outline-offset-1 outline-accent focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-dashed;
+  /* ===== scrollbar ===== */
+  html {
+    overflow-y: scroll;
   }
-  button:not(:disabled),
-  [role="button"]:not(:disabled) {
-    cursor: pointer;
+
+  /* width */
+  ::-webkit-scrollbar {
+    @apply w-3;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    @apply bg-skin-fill;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    @apply bg-skin-card;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-skin-card-muted;
+  }
+
+  code,
+  blockquote {
+    word-wrap: break-word;
+  }
+
+  pre > code {
+    white-space: pre;
   }
 }
 
-@utility max-w-app {
-  @apply max-w-3xl;
-}
-
+/* Additional utilities for compatibility */
 .active-nav {
   @apply underline decoration-wavy decoration-2 underline-offset-4;
 }
 
-/* Source: https://piccalil.li/blog/a-more-modern-css-reset/ */
-/* Anything that has been anchored to should have extra scroll margin */
-:target {
-  scroll-margin-block: 1rem;
+/* Header styles */
+nav a.active {
+  @apply underline decoration-wavy decoration-2 underline-offset-4;
 }
 
-#hero {
+nav a.active svg {
+  @apply fill-skin-accent;
+}
+
+/* Hamburger menu animation */
+.menu-icon line {
+  @apply transition-opacity duration-75 ease-in-out;
+}
+
+.menu-icon .close {
+  opacity: 0;
+}
+
+.menu-icon.is-active .line {
+  @apply opacity-0;
+}
+
+.menu-icon.is-active .close {
+  @apply opacity-100;
+}
+
+.max-w-app {
+  @apply max-w-3xl mx-auto;
+}
+
+#main-content {
+  @apply mx-auto w-full max-w-3xl px-4;
+}
+
+#main-content h1 {
+  @apply text-2xl font-semibold sm:text-3xl;
+}
+
+
+
+  /* ===== Hero Section ===== */
+  #hero {
     @apply pb-6 pt-8;
   }
 
@@ -120,8 +214,7 @@ html[data-theme="dark"] {
   }
 
   #hero .rss-icon {
-    @apply mb-2 h-6 w-6 scale-110 sm:mb-3 sm:scale-125;
-    fill: rgb(var(--color-accent));
+    @apply mb-2 h-6 w-6 scale-110 fill-skin-accent sm:mb-3 sm:scale-125;
   }
 
   #hero p {
@@ -134,16 +227,6 @@ html[data-theme="dark"] {
 
   .social-links {
     @apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
-  }
-
-  /* Fix social links positioning */
-  #hero {
-    @apply relative z-20;
-  }
-
-  /* Ensure featured section doesn't overlap */
-  #featured {
-    @apply relative z-10;
   }
 
   /* ===== Featured & Recent Posts Sections ===== */
@@ -160,152 +243,3 @@ html[data-theme="dark"] {
   .all-posts-btn-wrapper {
     @apply my-8 text-center;
   }
-
-  /* Page title section */
-  main > section:first-child h1 {
-    @apply mb-4;
-  }
-
-/* Page Transition Animations - AstroPaper Style */
-@layer utilities {
-  /* Prevent layout shift during transitions */
-  .page-transitioning {
-    overflow-x: hidden;
-    position: relative;
-  }
-
-  /* Title animation clone */
-  .title-animation-clone {
-    transform-origin: left top;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    font-weight: bold;
-    max-width: 90vw; /* Prevent overflow */
-  }
-
-  /* Title animating state - scales up and moves to top with limits */
-  .title-animating {
-    transform: scale(min(1.5, 2.5rem / 1rem)) translateY(max(-50vh, -200px));
-    opacity: 0.8;
-    font-size: clamp(1.5rem, 4vw, 2.5rem); /* Limit maximum size */
-  }
-
-  /* Content fade out - everything except the animating title, header, footer, and pagination */
-  .content-fade-out main > section > *:not(.title-animation-clone),
-  .content-fade-out #hero,
-  .content-fade-out #featured,
-  .content-fade-out #recent-posts {
-    opacity: 0;
-    transition: opacity 0.3s ease-out;
-  }
-
-  /* Keep header, footer, and pagination visible during transitions */
-  .content-fade-out header,
-  .content-fade-out footer,
-  .content-fade-out nav[aria-label="Pagination"] {
-    opacity: 1 !important;
-  }
-
-  /* Content fade in for new page - only main content */
-  .content-fade-in main > section {
-    animation: contentFadeIn 0.4s ease-out;
-  }
-
-  /* Ensure header and footer never animate */
-  header, footer, nav[aria-label="Pagination"] {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
-
-  @keyframes contentFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Smooth scroll behavior */
-  html {
-    scroll-behavior: smooth;
-  }
-
-  /* Hide scrollbar during animation */
-  .page-transitioning::-webkit-scrollbar {
-    display: none;
-  }
-
-  .page-transitioning {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-}
-
-/* Enhanced link hover effects */
-@layer components {
-  /* Blog post link container */
-  .post-link {
-    @apply block transition-transform duration-200 hover:translate-x-1;
-  }
-
-  /* Title hover effect */
-  .post-title {
-    @apply inline-block transition-all duration-200;
-  }
-
-  .post-link:hover .post-title {
-    @apply text-accent/80;
-  }
-}
-
-/* Temporary debug styles - remove after fixing */
-.debug * {
-  outline: 1px solid red;
-}
-
-/* Debug styles to identify layout issues */
-.debug-layout * {
-  outline: 1px solid red !important;
-}
-
-.debug-layout header {
-  background: rgba(255, 0, 0, 0.1) !important;
-}
-
-.debug-layout main {
-  background: rgba(0, 255, 0, 0.1) !important;
-}
-
-.debug-layout footer {
-  background: rgba(0, 0, 255, 0.1) !important;
-}
-
-.debug-layout .mt-auto {
-  background: rgba(255, 255, 0, 0.1) !important;
-}
-
-/* Debug: Show measurements */
-.debug-layout::before {
-  content: "Window: " attr(data-height);
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  background: yellow;
-  padding: 5px;
-  z-index: 9999;
-  font-size: 12px;
-}
-
-/* Ensure proper height calculation */
-.h-screen {
-  height: 100vh;
-  height: 100dvh; /* Use dynamic viewport height if supported */
-}
-
-/* Remove default margins */
-footer {
-  margin: 0;
-}

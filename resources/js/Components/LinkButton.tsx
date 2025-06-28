@@ -18,7 +18,7 @@ export default function LinkButton({
     disabled = false,
     children,
 }: LinkButtonProps) {
-    const baseClasses = `group inline-block hover:text-accent`;
+    const baseClasses = `group inline-block hover:text-skin-accent`;
 
     const disabledClasses = disabled ? "opacity-50 cursor-not-allowed" : "";
 

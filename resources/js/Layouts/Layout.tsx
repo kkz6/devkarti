@@ -13,6 +13,7 @@ interface LayoutProps {
     titleTransition?: string;
     pageDesc?: string;
     bottomContent?: ReactNode;
+    activeNav?: "posts" | "tags" | "about" | "search" | "hireme";
 }
 
 export default function Layout({
@@ -23,6 +24,7 @@ export default function Layout({
     pageTitle,
     pageDesc,
     bottomContent,
+    activeNav,
 }: LayoutProps) {
     const siteTitle = title ? `${title} - devkarti` : "devkarti";
     const siteDescription =
@@ -51,41 +53,33 @@ export default function Layout({
             </Head>
 
             <div className="h-screen flex flex-col">
-                <Header />
+                <Header activeNav={activeNav} />
                 {showBreadcrumb && <Breadcrumb />}
                 <main id="main-content" data-layout="index">
-                    <div className="mx-auto max-w-3xl px-4">
-                        {pageTitle && (
-                            <>
-                                <h1>
-                                    {typeof pageTitle === "string" ? (
-                                        pageTitle
-                                    ) : (
-                                        <>
-                                            {pageTitle[0]}
-                                            <span className="text-accent">
-                                                {pageTitle[1]}
-                                            </span>
-                                        </>
-                                    )}
-                                </h1>
-                                {pageDesc && (
-                                    <p className="mt-2 mb-6 italic">
-                                        {pageDesc}
-                                    </p>
+                    {pageTitle && (
+                        <>
+                            <h1>
+                                {typeof pageTitle === "string" ? (
+                                    pageTitle
+                                ) : (
+                                    <>
+                                        {pageTitle[0]}
+                                        <span className="text-skin-accent">
+                                            {pageTitle[1]}
+                                        </span>
+                                    </>
                                 )}
-                            </>
-                        )}
+                            </h1>
+                            {pageDesc && (
+                                <p className="mt-2 mb-6 italic">{pageDesc}</p>
+                            )}
+                        </>
+                    )}
 
-                        {children}
-                    </div>
+                    {children}
                 </main>
                 <div className="mt-auto">
-                    {bottomContent && (
-                        <div className="mx-auto max-w-3xl px-4">
-                            {bottomContent}
-                        </div>
-                    )}
+                    {bottomContent && <div>{bottomContent}</div>}
                     <Footer />
                 </div>
             </div>

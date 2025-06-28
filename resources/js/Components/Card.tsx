@@ -26,7 +26,7 @@ export default function Card({
     return (
         <li className="my-6">
             <Link href={href} className="post-link">
-                <HeadingTag className="post-title text-lg font-medium text-accent decoration-dashed hover:underline">
+                <HeadingTag className="post-title text-lg font-medium text-skin-accent decoration-dashed hover:underline">
                     {title}
                 </HeadingTag>
             </Link>

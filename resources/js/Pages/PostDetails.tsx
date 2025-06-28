@@ -33,10 +33,10 @@ export default function PostDetails({
         // Create progress bar
         const progressContainer = document.createElement("div");
         progressContainer.className =
-            "progress-container fixed top-0 z-10 h-1 w-full bg-background";
+            "progress-container fixed top-0 z-10 h-1 w-full bg-skin-fill";
 
         const progressBar = document.createElement("div");
-        progressBar.className = "progress-bar h-1 w-0 bg-accent";
+        progressBar.className = "progress-bar h-1 w-0 bg-skin-accent";
         progressBar.id = "myBar";
 
         progressContainer.appendChild(progressBar);
@@ -86,7 +86,7 @@ export default function PostDetails({
 
             const copyButton = document.createElement("button");
             copyButton.className =
-                "copy-code absolute end-3 top-3 rounded bg-muted/80 px-2 py-1 text-xs leading-4 text-foreground font-medium";
+                "copy-code absolute end-3 top-3 rounded bg-skin-card/80 px-2 py-1 text-xs leading-4 text-skin-base font-medium";
             copyButton.innerHTML = copyButtonLabel;
             codeBlock.setAttribute("tabindex", "0");
             codeBlock.appendChild(copyButton);
@@ -126,32 +126,20 @@ export default function PostDetails({
             showBreadcrumb={true}
         >
             {/* Back Button */}
-            <button
-                onClick={() => window.history.back()}
-                className="mx-auto max-w-app px-4 mt-8 mb-4 flex items-center gap-1 text-accent hover:opacity-75"
-            >
-                <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+            <div className="flex w-full justify-start">
+                <button
+                    onClick={() => window.history.back()}
+                    className="focus-outline mb-2 mt-8 flex hover:opacity-75 cursor-pointer"
                 >
-                    <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                    />
-                </svg>
-                <span>Go back</span>
-            </button>
+                    <svg xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path>
+                    </svg>
+                    <span>Go back</span>
+                </button>
+            </div>
 
-            <main
-                id="main-content"
-                className="mx-auto w-full max-w-app px-4 pb-12"
-                data-pagefind-body
-            >
-                <h1 className="inline-block text-2xl font-bold text-accent sm:text-3xl">
+            <div data-pagefind-body>
+                <h1 className="inline-block text-2xl font-bold text-skin-accent sm:text-3xl">
                     {post.title}
                 </h1>
 
@@ -162,7 +150,7 @@ export default function PostDetails({
                             <span aria-hidden="true" className="max-sm:hidden">
                                 |
                             </span>
-                            <span className="text-sm text-muted max-sm:hidden">
+                            <span className="text-sm text-skin-base/70 max-sm:hidden">
                                 Updated:{" "}
                                 <Datetime
                                     datetime={post.updated_at}
@@ -175,11 +163,11 @@ export default function PostDetails({
 
                 <article
                     id="article"
-                    className="app-prose mx-auto mt-8 max-w-app prose prose-lg dark:prose-invert prose-pre:bg-muted/20"
+                    className="app-prose mx-auto mt-8 max-w-app prose prose-lg dark:prose-invert prose-pre:bg-skin-card/20"
                     dangerouslySetInnerHTML={{ __html: post.content }}
                 />
 
-                <hr className="my-8 border-dashed border-border" />
+                <hr className="my-8 border-dashed border-skin-line" />
 
                 <ul className="mt-4 mb-8 sm:my-8 flex flex-wrap gap-2">
                     {post.tags.map((tag) => (
@@ -190,7 +178,7 @@ export default function PostDetails({
                 {/* Back to Top Button */}
                 <button
                     onClick={scrollToTop}
-                    className="fixed bottom-8 end-8 bg-accent text-background p-3 rounded-full shadow-lg hover:opacity-90 transition-opacity"
+                    className="fixed bottom-8 end-8 bg-skin-accent text-skin-inverted p-3 rounded-full shadow-lg hover:opacity-90 transition-opacity"
                     aria-label="Back to top"
                 >
                     <svg
@@ -214,7 +202,7 @@ export default function PostDetails({
                     slug={post.slug}
                 />
 
-                <hr className="my-6 border-dashed border-border" />
+                <hr className="my-6 border-dashed border-skin-line" />
 
                 {/* Previous/Next Post Buttons */}
                 <div
@@ -241,7 +229,7 @@ export default function PostDetails({
                             </svg>
                             <div>
                                 <span>Previous Post</span>
-                                <div className="text-sm text-accent/85">
+                                <div className="text-sm text-skin-accent/85">
                                     {prevPost.title}
                                 </div>
                             </div>
@@ -254,7 +242,7 @@ export default function PostDetails({
                         >
                             <div>
                                 <span>Next Post</span>
-                                <div className="text-sm text-accent/85">
+                                <div className="text-sm text-skin-accent/85">
                                     {nextPost.title}
                                 </div>
                             </div>
@@ -274,7 +262,7 @@ export default function PostDetails({
                         </Link>
                     )}
                 </div>
-            </main>
+            </div>
         </Layout>
     );
 }

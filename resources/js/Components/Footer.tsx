@@ -11,15 +11,13 @@ export default function Footer({ noMarginTop = false }: FooterProps) {
 
     return (
         <footer className="w-full overflow-hidden">
-            <div className="mx-auto max-w-3xl px-4">
-                <Hr noPadding />
-                <div className="flex flex-col items-center justify-between py-4 sm:flex-row-reverse overflow-hidden">
-                    <Socials centered />
-                    <div className="my-2 flex flex-col items-center whitespace-nowrap sm:flex-row">
-                        <span>Copyright © {currentYear}</span>
-                        <span className="hidden sm:inline">&nbsp;|&nbsp;</span>
-                        <span>All rights reserved.</span>
-                    </div>
+            <Hr noPadding />
+            <div className="flex flex-col items-center justify-between py-4 sm:flex-row-reverse overflow-hidden">
+                <Socials centered />
+                <div className="my-2 flex flex-col items-center whitespace-nowrap sm:flex-row">
+                    <span>Copyright © {currentYear}</span>
+                    <span className="hidden sm:inline">&nbsp;|&nbsp;</span>
+                    <span>All rights reserved.</span>
                 </div>
             </div>
         </footer>

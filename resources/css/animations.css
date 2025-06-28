@@ -1,0 +1,94 @@
+/* Page Transition Animations - AstroPaper Style */
+@layer utilities {
+  /* Prevent layout shift during transitions */
+  .page-transitioning {
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Title animation clone */
+  .title-animation-clone {
+    transform-origin: left top;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: bold;
+    max-width: 90vw; /* Prevent overflow */
+  }
+
+  /* Title animating state - scales up and moves to top with limits */
+  .title-animating {
+    transform: scale(min(1.5, 2.5rem / 1rem)) translateY(max(-50vh, -200px));
+    opacity: 0.8;
+    font-size: clamp(1.5rem, 4vw, 2.5rem); /* Limit maximum size */
+  }
+
+  /* Content fade out - everything except the animating title, header, footer, and pagination */
+  .content-fade-out main > section > *:not(.title-animation-clone),
+  .content-fade-out #hero,
+  .content-fade-out #featured,
+  .content-fade-out #recent-posts {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+  }
+
+  /* Keep header, footer, and pagination visible during transitions */
+  .content-fade-out header,
+  .content-fade-out footer,
+  .content-fade-out nav[aria-label="Pagination"] {
+    opacity: 1 !important;
+  }
+
+  /* Content fade in for new page - only main content */
+  .content-fade-in main > section {
+    animation: contentFadeIn 0.4s ease-out;
+  }
+
+  /* Ensure header and footer never animate */
+  header, footer, nav[aria-label="Pagination"] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  @keyframes contentFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Hide scrollbar during animation */
+  .page-transitioning::-webkit-scrollbar {
+    display: none;
+  }
+
+  .page-transitioning {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Enhanced link hover effects */
+@layer components {
+  /* Blog post link container */
+  .post-link {
+    @apply block transition-transform duration-200 hover:translate-x-1;
+  }
+
+  /* Title hover effect */
+  .post-title {
+    @apply inline-block transition-all duration-200;
+  }
+
+  .post-link:hover .post-title {
+    @apply text-skin-accent/80;
+  }
+}

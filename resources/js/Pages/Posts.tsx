@@ -36,6 +36,7 @@ export default function Posts({ posts }: PostsProps) {
             pageTitle="Posts"
             pageDesc="All the articles I've posted."
             showBreadcrumb={true}
+            activeNav="posts"
             bottomContent={
                 posts.last_page > 1 ? (
                     <Pagination

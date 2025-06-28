@@ -68,6 +68,14 @@ export class BlogController {
     };
   }
 
+  @Get('about')
+  async about() {
+    return {
+      component: 'About',
+      props: {}
+    };
+  }
+
   // API endpoints for admin panel (future implementation)
   @Post('api/posts')
   create(@Body() createPostDto: CreatePostDto) {

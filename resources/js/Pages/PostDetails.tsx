@@ -4,6 +4,7 @@ import Layout from "@/Layouts/Layout";
 import Datetime from "@/Components/Datetime";
 import Tag from "@/Components/Tag";
 import ShareLinks from "@/Components/ShareLinks";
+import ContentRenderer from "@/Components/ContentRenderer";
 
 interface Post {
     id: number;
@@ -78,27 +79,31 @@ export default function PostDetails({
 
         // Attach copy buttons to code blocks
         const copyButtonLabel = "Copy";
-        const codeBlocks = Array.from(document.querySelectorAll("pre"));
+        const codeBlocks = Array.from(
+            document.querySelectorAll(".shiki-code-block pre, pre")
+        );
 
         for (const codeBlock of codeBlocks) {
+            // Skip if already has a copy button
+            if (codeBlock.querySelector(".copy-code")) continue;
+
             const wrapper = document.createElement("div");
             wrapper.style.position = "relative";
 
             const copyButton = document.createElement("button");
             copyButton.className =
-                "copy-code absolute end-3 top-3 rounded bg-skin-card/80 px-2 py-1 text-xs leading-4 text-skin-base font-medium";
+                "copy-code absolute end-3 top-3 rounded bg-skin-card/80 px-2 py-1 text-xs leading-4 text-skin-base font-medium hover:bg-skin-card";
             copyButton.innerHTML = copyButtonLabel;
             codeBlock.setAttribute("tabindex", "0");
-            codeBlock.appendChild(copyButton);
 
-            codeBlock?.parentNode?.insertBefore(wrapper, codeBlock);
-            wrapper.appendChild(codeBlock);
+            // Insert button as first child to avoid layout issues
+            codeBlock.insertBefore(copyButton, codeBlock.firstChild);
 
             copyButton.addEventListener("click", async () => {
                 const code = codeBlock.querySelector("code");
-                const text = code?.innerText;
+                const text = code?.textContent || codeBlock.textContent || "";
 
-                await navigator.clipboard.writeText(text ?? "");
+                await navigator.clipboard.writeText(text);
 
                 copyButton.innerText = "Copied";
                 setTimeout(() => {
@@ -161,11 +166,7 @@ export default function PostDetails({
                     )}
                 </div>
 
-                <article
-                    id="article"
-                    className="app-prose mx-auto mt-8 max-w-app prose prose-lg dark:prose-invert prose-pre:bg-skin-card/20"
-                    dangerouslySetInnerHTML={{ __html: post.content }}
-                />
+                <ContentRenderer content={post.content} />
 
                 <hr className="my-8 border-dashed border-skin-line" />
 

@@ -1,5 +1,7 @@
 @import "./fonts.css";
 @import "tailwindcss";
+@import "./animations.css";
+
 @plugin "@tailwindcss/typography";
 
 @theme {
@@ -22,9 +24,6 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @layer components {
-    .display-none {
-      @apply hidden;
-    }
     .focus-outline {
       @apply outline-2 outline-offset-1 outline-skin-fill focus-visible:no-underline focus-visible:outline-dashed;
     }
@@ -47,14 +46,6 @@
     --color-card: rgb(52, 63, 96);
     --color-card-muted: rgb(138, 51, 2);
     --color-border: rgb(171, 75, 8);
-  }
-  #sun-svg,
-  html[data-theme="dark"] #moon-svg {
-    display: none;
-  }
-  #moon-svg,
-  html[data-theme="dark"] #sun-svg {
-    display: block;
   }
   body {
     @apply flex min-h-[100svh] flex-col bg-skin-fill font-mono text-skin-base
@@ -169,9 +160,22 @@ nav a.active svg {
   @apply fill-skin-accent;
 }
 
-/* Hamburger menu animation */
+/* Hamburger menu animation - Fixed for smooth transitions */
+.hamburger-menu {
+  @apply relative;
+}
+
+.menu-icon {
+  @apply transition-transform duration-300 ease-in-out;
+}
+
 .menu-icon line {
-  @apply transition-opacity duration-75 ease-in-out;
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+  transform-origin: center;
+}
+
+.menu-icon .line {
+  opacity: 1;
 }
 
 .menu-icon .close {
@@ -179,11 +183,74 @@ nav a.active svg {
 }
 
 .menu-icon.is-active .line {
-  @apply opacity-0;
+  opacity: 0;
 }
 
 .menu-icon.is-active .close {
-  @apply opacity-100;
+  opacity: 1;
+}
+
+/* Mobile menu transition */
+#menu-items {
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+}
+
+/* Theme toggle animation */
+#theme-btn {
+  @apply transition-transform duration-300 ease-in-out;
+}
+
+#theme-btn:hover {
+  @apply scale-110;
+}
+
+#theme-btn svg {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+/* Link hover transitions */
+nav a {
+  @apply transition-colors duration-200 ease-in-out;
+}
+
+/* Skip to content animation */
+#skip-to-content {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+/* Search button transitions */
+.focus-outline svg {
+  @apply transition-all duration-200 ease-in-out;
+}
+
+/* Shiki code blocks */
+.shiki-code-block {
+  @apply my-6;
+}
+
+.shiki-code-block pre {
+  @apply p-4 overflow-x-auto rounded-lg;
+  background-color: var(--shiki-color-background, var(--color-card));
+}
+
+.shiki-code-block code {
+  @apply text-sm leading-relaxed;
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+/* Override prose styles for code blocks */
+.app-prose .shiki-code-block pre {
+  @apply bg-transparent;
+}
+
+.app-prose .shiki-code-block code {
+  @apply text-inherit;
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] .shiki-code-block {
+  @apply opacity-95;
 }
 
 .max-w-app {

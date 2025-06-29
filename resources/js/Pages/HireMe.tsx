@@ -15,31 +15,10 @@ export default function HireMe() {
                             </span>{" "}
                             Contact
                         </h2>
-                        <svg
-                            className="rough-annotation absolute top-0 left-0 overflow-visible pointer-events-none w-[100px] h-[100px]"
-                            style={{
-                                transform: "translate(-50%, -50%) scale(1.5)",
-                                left: "50%",
-                                top: "50%",
-                            }}
-                        >
-                            <path
-                                d="M10 25 C30 25, 50 25, 70 25"
-                                fill="none"
-                                stroke="rgb(5 206 145)"
-                                strokeWidth="2"
-                            />
-                            <path
-                                d="M70 30 C50 30, 30 30, 10 30"
-                                fill="none"
-                                stroke="rgb(5 206 145)"
-                                strokeWidth="2"
-                            />
-                        </svg>
                     </div>
 
                     <div className="mt-8 mb-8">
-                        <h3 className="font-medium text-lg mb-2 md:text-3xl">
+                        <h3 className="font-medium mb-2 md:text-3xl text-lg">
                             Let's be awesome together!
                         </h3>
                         <p className="mb-6 mx-auto max-w-lg md:mb-10 lg:leading-loose">
@@ -50,7 +29,7 @@ export default function HireMe() {
                         </p>
                         <a
                             role="button"
-                            className="bg-skin-accent hover:opacity-90 active:opacity-80 text-skin-inverted py-2 px-3 rounded lg:text-xl outline-skin-accent focus-visible:outline-double outline-offset-2 inline-block"
+                            className="bg-marrsgreen hover:bg-marrslight active:bg-marrsdark dark:hover:bg-carrilight dark:active:bg-carridark dark:bg-carrigreen text-bglight dark:text-bgdark py-2 px-3 rounded lg:text-xl  outline-marrsgreen dark:outline-carrigreen focus-visible:outline-double outline-offset-2"
                             href="mailto:karthick@gigcodes.com"
                             target="_self"
                         >
